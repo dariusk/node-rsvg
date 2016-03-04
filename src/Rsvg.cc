@@ -70,7 +70,8 @@ NAN_METHOD(Rsvg::New) {
     if (ARGVAR.IsConstructCall()) {
         // Invoked as constructor: `new Rsvg(...)`
         RsvgHandle* handle;
-        if (Buffer::HasInstance(ARGVAR[0])) {
+        if (false) {
+            /*
             const guint8* buffer =
                 reinterpret_cast<guint8*>(Buffer::Data(ARGVAR[0]));
             gsize length = Buffer::Length(ARGVAR[0]);
@@ -83,6 +84,7 @@ NAN_METHOD(Rsvg::New) {
                 g_error_free(error);
                 ARGVAR.GetReturnValue().Set(Nan::Undefined());
             }
+            */
         } else {
             handle = rsvg_handle_new();
         }
@@ -189,7 +191,8 @@ NAN_METHOD(Rsvg::GetHeight) {
 NAN_METHOD(Rsvg::Write) {
     Nan::HandleScope scope;
     Rsvg* obj = ObjectWrap::Unwrap<Rsvg>(ARGVAR.This());
-    if (Buffer::HasInstance(ARGVAR[0])) {
+    if (false) {
+        /*
         const guchar* buffer =
             reinterpret_cast<guchar*>(Buffer::Data(ARGVAR[0]));
         gsize length = Buffer::Length(ARGVAR[0]);
@@ -203,6 +206,7 @@ NAN_METHOD(Rsvg::Write) {
         } else if (!success) {
             Nan::ThrowError("Failed to write data.");
         }
+        */
     } else {
         Nan::ThrowError("Invalid argument: buffer");
     }
